@@ -14,28 +14,6 @@ spec:
         app: mysql
     spec:
       terminationGracePeriodSeconds: 30
-      initContainers:
-        - name: init-db
-          image: mysql:8.0
-          command:
-            - sh
-            - -c
-            - |
-              echo "Waiting for MySQL to be ready..."
-              until mysqladmin ping -h mysql --silent; do
-                sleep 2
-              done
-              echo "MySQL is ready. Running init script..."
-              mysql -h mysql -uadmin -padmin mydb < /init/init.sql
-          volumeMounts:
-            - name: init-script
-              mountPath: /init
-          env:
-            - name: MYSQL_PWD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-password
       containers:
         - name: mysql
           image: mysql:8.0
@@ -65,10 +43,6 @@ spec:
           volumeMounts:
             - name: mysql-pv-storage
               mountPath: /var/lib/mysql
-      volumes:
-        - name: init-script
-          configMap:
-            name: mysql-init-script
   volumeClaimTemplates:
     - metadata:
         name: mysql-pv-storage
