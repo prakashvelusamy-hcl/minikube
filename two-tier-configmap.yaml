@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: db-config
 data:
-  MYSQL_HOST: "mysql-service.default.svc.cluster.local"
+  MYSQL_HOST: "mysql.default.svc.cluster.local"
   MYSQL_USER: "admin"
   MYSQL_DB: "mydb"
