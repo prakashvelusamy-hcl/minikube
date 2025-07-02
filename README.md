@@ -1,0 +1,1 @@
+kubectl port-forward --address=0.0.0.0 svc/two-tier-app-service 5000:80
