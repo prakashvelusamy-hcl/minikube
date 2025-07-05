@@ -18,6 +18,8 @@ spec:
         tier: frontend
     spec:
       serviceAccountName: two-tier-sa
+      nodeSelector:
+        nodeType: worker
       initContainers:
         - name: wait-for-db
           image: busybox:1.35.0-uclibc
