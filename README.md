@@ -11,3 +11,6 @@ kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring --address 0
 kubectl port-forward --address=0.0.0.0 svc/two-tier-app-service 5000:80
 
 
+kubectl auth can-i delete pods --as=system:serviceaccount:default:two-tier-sa
+
+
