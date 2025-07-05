@@ -13,8 +13,6 @@ spec:
       labels:
         app: mysql
     spec:
-      nodeSelector:
-        nodeType: worker 
       terminationGracePeriodSeconds: 30
       containers:
         - name: mysql
